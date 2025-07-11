@@ -1,0 +1,22 @@
+SELECT * FROM CLIENTE;
+
+SELECT CNPJ, SUBSTR(CNPJ, 1, 3) || '/' || SUBSTR(CNPJ, 4, 2) || '-' || SUBSTR(CNPJ,6) AS CNPJ_FORMATADO FROM CLIENTE;
+
+CREATE OR REPLACE PROCEDURE FORMATA_CNPJ
+(p_CNPJ IN cliente.cnpj%type, p_CNPJ_SAIDA OUT cliente.cnpj%type)
+IS
+BEGIN
+    p_CNPJ_SAIDA := SUBSTR(p_CNPJ, 1, 3) || '/' || SUBSTR(p_CNPJ, 4, 2) || '-' || SUBSTR(p_CNPJ,6);
+END;
+
+
+DECLARE
+    v_CNPJ       CLIENTE.CNPJ%type;
+    v_CNPJ_SAIDA CLIENTE.CNPJ%type;
+BEGIN
+    v_CNPJ := '1234567890';
+    v_CNPJ_SAIDA := '1234567890';
+    DBMS_OUTPUT.put_line(v_CNPJ || ' ' || v_CNPJ_SAIDA);
+    formata_cnpj(v_CNPJ, v_CNPJ_SAIDA);
+    DBMS_OUTPUT.put_line(v_CNPJ || ' ' || v_CNPJ_SAIDA);
+END;

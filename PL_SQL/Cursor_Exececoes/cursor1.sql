@@ -1,0 +1,14 @@
+DECLARE
+    v_ID    CLIENTE.ID%type;
+    v_RAZAO CLIENTE.RAZAO_SOCIAL%type;
+    CURSOR cur_CLIENTE IS SELECT ID, RAZAO_SOCIAL
+                          FROM CLIENTE;
+BEGIN
+    OPEN cur_CLIENTE;
+    LOOP
+        FETCH cur_CLIENTE INTO v_ID, v_RAZAO;
+        EXIT WHEN cur_CLIENTE%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_ID);
+    END LOOP;
+END
+;

@@ -1,0 +1,10 @@
+CREATE OR REPLACE PROCEDURE proc_incluir_segmercado(p_ID IN SEGMERCADO.ID%type, p_DESCRICAO IN SEGMERCADO.DESCRICAO%type)
+IS
+BEGIN
+    INSERT INTO SEGMERCADO(ID, DESCRICAO) VALUES (p_ID, UPPER(p_DESCRICAO));
+    COMMIT;
+END;
+
+DROP procedure proc_incluir_segmercado;
+SELECT * FROM SEGMERCADO;
+CALL proc_incluir_segmercado(11, 'Loja');

@@ -1,0 +1,14 @@
+DECLARE
+    v_SEGMERCADO CLIENTE.SEGMERCADO_ID%type := 2;
+    v_ID         CLIENTE.ID%type := 1;
+BEGIN
+    LOOP
+        ATUALIZAR_SEGMERCADO(v_ID, v_SEGMERCADO);
+        v_ID := v_ID + 1;
+        EXIT WHEN v_ID > 9;
+    END LOOP;
+END;
+
+
+SELECT * FROM CLIENTE;
+SELECT * FROM SEGMERCADO;

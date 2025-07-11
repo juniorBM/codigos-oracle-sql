@@ -1,0 +1,12 @@
+DECLARE
+    v_SEGMERCADO CLIENTE.SEGMERCADO_ID%type := 2;
+    v_ID         CLIENTE.SEGMERCADO_ID%type;
+    CURSOR cur_CLIENTE IS SELECT ID
+                          FROM CLIENTE;
+BEGIN
+    FOR linha_cur_CLIENTE IN cur_CLIENTE
+        LOOP
+            ATUALIZAR_SEGMERCADO(linha_cur_CLIENTE.ID, v_SEGMERCADO);
+        END LOOP;
+END;
+SELECT * FROM CLIENTE;

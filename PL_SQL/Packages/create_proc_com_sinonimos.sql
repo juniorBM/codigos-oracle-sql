@@ -1,0 +1,14 @@
+CREATE OR REPLACE PROCEDURE APP_INCLUIR_CLIENTE(
+    p_ID IN CLIENTE.id%type,
+    p_RAZAO IN CLIENTE.razao_social%type,
+    p_CNPJ IN CLIENTE.cnpj%type,
+    p_SEGMERCADO IN CLIENTE.segmercado_id%type,
+    p_FATURAMENTO IN CLIENTE.faturamento_previsto%type
+)
+IS
+BEGIN
+   INCLUIR_CLIENTE(p_ID, p_RAZAO, p_CNPJ, p_SEGMERCADO, p_FATURAMENTO);
+END;
+
+select * from CLIENTE;
+CALL APP_INCLUIR_CLIENTE(6, 'PELO APP', '944948', 2, 10000);

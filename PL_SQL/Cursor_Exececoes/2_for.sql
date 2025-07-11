@@ -1,0 +1,12 @@
+DECLARE
+    v_SEGMERCADO CLIENTE.SEGMERCADO_ID%type := 2;
+    v_NUMCLI     INTEGER;
+BEGIN
+    SELECT COUNT(*) INTO v_NUMCLI FROM CLIENTE;
+
+    FOR v_ID IN 1..v_NUMCLI
+        LOOP
+            DBMS_OUTPUT.put_line(v_ID);
+            ATUALIZAR_SEGMERCADO(v_ID, v_SEGMERCADO);
+        END LOOP;
+END;

@@ -1,0 +1,13 @@
+CREATE OR REPLACE FUNCTION obter_decricacao_seg_mercado(p_ID IN SEGMERCADO.ID%type)
+
+RETURN SEGMERCADO.DESCRICAO%type
+IS
+    v_DESCRICAO SEGMERCADO.DESCRICAO%type;
+BEGIN
+    SELECT DESCRICAO INTO v_DESCRICAO FROM SEGMERCADO WHERE ID = p_ID;
+    RETURN v_DESCRICAO;
+END;
+
+commit;
+SELECT id, obter_decricacao_seg_mercado(id) FROM SEGMERCADO;
+SELECT obter_decricacao_seg_mercado(11) FROM DUAL;
